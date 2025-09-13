@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "one" {
-  bucket = "lavanya.devops.project.bucket"
+  bucket = "lavanya.bucket"
 }
 
 resource "aws_s3_bucket_ownership_controls" "two" {
@@ -25,7 +25,7 @@ status = "Enabled"
 terraform {
 backend "s3" {
 region = "us-east-1"
-bucket = "mustafashaik77.devops.project.bucket"
+bucket = "lavanya.bucket"
 key = "prod/terraform.tfstate"
 }
 }
