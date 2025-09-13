@@ -22,10 +22,3 @@ versioning_configuration {
 status = "Enabled"
 }
 }
-terraform {
-backend "s3" {
-region = "us-east-1"
-bucket = "lavanya.devops.need.bucket"
-key = "prod/terraform.tfstate"
-}
-}
