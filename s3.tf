@@ -24,7 +24,7 @@ status = "Enabled"
 }
 terraform {
 backend "s3" {
-region = "lavanya.bucket"
+region = "eu-north-1"
 bucket = "lavanya.bucket"
 key = "prod/terraform.tfstate"
 }
