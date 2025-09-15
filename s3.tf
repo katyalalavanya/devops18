@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "one" {
-  bucket = "lavanya77.devops.need.bucket"
+  bucket = "lavanya.devops.project.bucket"
 }
 
 resource "aws_s3_bucket_ownership_controls" "two" {
@@ -22,5 +22,3 @@ versioning_configuration {
 status = "Enabled"
 }
 }
-
-
