@@ -1,0 +1,31 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('code') {
+            steps {
+                git branch: 'main', url: 'https://github.com/katyalalavanya/devops18.git'
+            }
+        }
+        stage('deploy') {
+            steps {
+                sh 'echo -e "yes\n" | terraform init'
+                sh 'terraform plan'
+                sh 'terraform apply --auto-approve'
+            }
+        }
+        stage ('ansiblepipleine') {
+            steps {
+                sh 'ansible-playbook -i /etc/ansible/aws_ec2.yml /var/lib/jenkins/workspace/project/ansible/deployment.yml'
+            }
+        }
+    }
+    post {
+        always {
+            echo 'Slack Notifications'
+            slackSend (
+                    channel: 'mono', message: "*${currentBuild.currentResult}:* Job ${env.JOB_NAME} \n build ${env.BUILD_NUMBER} \n More info at: ${env.BUILD_URL}"
+                    )
+                }
+            }
+        }
